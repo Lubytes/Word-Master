@@ -22,6 +22,7 @@ public class WordMaster {
 		//Section 1
 		if (s == a){
 			int score1 = anag();
+			System.out.print("Your score was " + score1 +"/10");
 			a = 0;
 		}
 		else if (s == b){
@@ -39,38 +40,28 @@ public class WordMaster {
 
 	public static int anag(){
 		//Have a word vault, scramble words using a scrambler we design. (input and check if String equals)
-
+		String [] word = {"hello", "goodbye", "greetings", "helpful", "cheese", "amazing", "question", "forever"
+				, "remote", "board", "white", "black", "colour", "green", "yellow", "orange", "fun" 
+				, "one", "two", "three", "four", "five", "six", "seven", "eight", "excellent"};
 		Scanner kb = new Scanner(System.in);
 		Random rnd = new Random();
-		int i = 0;
+		int i = 0;//The random number
+		int x = word.length;//Used for the random #
 		String ans;
 		int score1 = 0;
 		boolean b;
-		int [] test = new int[10];
+		
 
-		//If any words are added the random num (i) needs to be changed
-		String [] word = {"hello", "goodbye", "greetings", "helpful", "cheese", "amazing", "question", "forever"
-				, "remote", "board", "white", "black", "colour", "green", "yellow", "orange", "fun" 
-						, "one", "two", "three", "four", "five", "six", "seven", "eight", "excellent"};
-
+		
 		System.out.print("Welcome to the anagram section! An anagram is a word that has its letters in a random order."
 				+ "\nYour job is to state the correct order of the word."
-				+ "\nCapitals are not used, so don't worry about having a lowercase at the beginning of a word! ");
-
+				+ "\nCapitals are not used, so don't worry about having a lowercase at the beginning of a word!\n");
+		
 		//counts 10 questions
+		int [] test = questionSelect(x);
 		for (int z = 0; z<10; z++){
-			b = false;
-			//Makes sure words are not re-used
-			while(b == false){
-				b = true;
-				i = rnd.nextInt(25);//# of words-1
-				for(int y = 0; y<10; y++){
-					if(i == (test[y])){
-						b = false;
-					}
-				}
-			}
-			test[z]=i;
+			
+			i = test[z];
 
 			System.out.print("Your word is: ");
 			//Sends the randomly picked word to be scrambled
@@ -86,8 +77,6 @@ public class WordMaster {
 				System.out.println("This is incorrect.\nThe answer we were looking for was " + word[i]);
 		}
 
-
-
 		return score1;
 	}
 
@@ -96,11 +85,11 @@ public class WordMaster {
 		Random rnd = new Random();
 		int length = word.length();
 		int [] sword = new int [length];
-		boolean b; //Test to see if char was used yet
+		boolean b; //Test to see if char place was used yet
 		int i; //The random number
 		int x = 0;
 		//x is only increased if a letter is successfully printed
-		while(x<(length)){
+		while(x<length){
 			i = rnd.nextInt(length);
 			b = false;
 			//y tests all currently stored values so no letter is
@@ -126,7 +115,8 @@ public class WordMaster {
 		//First 20 will be . The next 20 will be , and so on
 		String [] question = {"The dog says woof[ ]", "The cat says meow[ ]", "I like cheese[ ]", "I went for a walk[ ]", "Hit the ball with the paddle[ ]"
 				, "It's fun to run[ ]", "School is where you learn[ ]", "Don't run with scissors[ ]", "It is sunny outside today[ ]", "Hit the ball with the bat[ ]" //Periods
-				, ""};
+				, "Rain is no fun[]", "It's good to have a healthy breakfast[]", "Lunch is my favourite meal of the day[]", "English is confusing[]", "Learning is fun[]"
+				, "Cows go moo[]", "Siblings are annoying[]", "Nanny makes cookies[]", "Sports are fun[]", "Computer Science is the best faculty[]"};
 
 
 
