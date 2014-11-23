@@ -177,7 +177,20 @@ public class WordMaster {
 				, "My friend said [] great at drawing!", "On behalf of the kingdom, [] hereby being knighted."
 				, "When it is midnight, [] to head home.", "[] so lucky to have such great friends!"
 		};
-
+		//too
+		String [] to= {"There are [] many things.", "I baked [] many cakes.", "The sky is [] blue."
+				, "The cold is [] much for me.", "The beach has [] many grains of sand."
+				, "The sun is [] bright.", "You are running [] fast.", "The cookies are [] high for me to reach."
+				, "Don't get [] close to the fire."
+				, "It is [] wet outside to play.", 
+		//to
+				,"I went [] the store.", "There is time [] read this book."
+				, "We can fly [] to the moon.  "
+				, "It would take years [] count grains of sand on the beach."
+				, "Lets go [] the mall.", "We can go outside [] play."
+				, "I brought my books [] school.", "We have [] share."
+				, "The wolf walked [] the woods.", "There is a path [] grandma's house."
+		}
 		System.out.print("Welcome to the homonyms section!"
 				+ "\nCapitals are not used, so don't worry about having a lowercase at the beginning of a word! "
 				+ "\nYour objective will be to use the correct form of the word for the given sentence"
