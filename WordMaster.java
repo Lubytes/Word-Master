@@ -45,39 +45,44 @@ public class WordMaster {
 				, "one", "two", "three", "four", "five", "six", "seven", "eight", "excellent"};
 		Scanner kb = new Scanner(System.in);
 		Random rnd = new Random();
-		int i = 0;//The random number
+		int i = 0, md;//The random number
 		int x = word.length;//Used for the random #
 		String ans;
 		int score1 = 0;
 		boolean b;
-		
 
-		
-		System.out.print("Welcome to the anagram section! An anagram is a word that has its letters in a random order."
-				+ "\nYour job is to state the correct order of the word."
-				+ "\nCapitals are not used, so don't worry about having a lowercase at the beginning of a word!\n");
-		
+
+
+		System.out.print("Welcome to the anagram section!"
+				+ "\nCapitals are not used, so don't worry about having a lowercase at the beginning of a word! "
+				+ "\nPlease type 0 to get a definition of what an anagram is, or type 1 to start!");
+		md=kb.nextInt();
 		//counts 10 questions
-		int [] test = questionSelect(x);
-		for (int z = 0; z<10; z++){
-			
-			i = test[z];
+		if(md==1){
+			int [] test = questionSelect(x);
+			for (int z = 0; z<10; z++){
 
-			System.out.print("Your word is: ");
-			//Sends the randomly picked word to be scrambled
-			scram(word[i]);
-			System.out.print("\nState the ordered word: ");
-			//Incase they put in a capital letter
-			ans = kb.nextLine().toLowerCase();
-			if (ans.equals(word[i])){
-				System.out.println("That is correct! ");
-				score1++;
-			}
-			else
-				System.out.println("This is incorrect.\nThe answer we were looking for was " + word[i]);
+				i = test[z];
+
+				System.out.print("Your word is: ");
+				//Sends the randomly picked word to be scrambled
+				scram(word[i]);
+				System.out.print("\nState the ordered word: ");
+				//Incase they put in a capital letter
+				ans = kb.nextLine().toLowerCase();
+				if (ans.equals(word[i])){
+					System.out.println("That is correct! ");
+					score1++;
+				}
+				else
+					System.out.println("This is incorrect.\nThe answer we were looking for was " + word[i]);
+			} 
+		} else {
+			anagDef();
+			anag();
 		}
-
 		return score1;
+
 	}
 
 	public static void scram(String word){
@@ -118,7 +123,7 @@ public class WordMaster {
 				, "Rain is no fun[]", "It's good to have a healthy breakfast[]", "Lunch is my favourite meal of the day[]", "English is confusing[]", "Learning is fun[]"
 				, "Cows go moo[]", "Siblings are annoying[]", "Nanny makes cookies[]", "Sports are fun[]", "Computer Science is the best faculty[]"
 				, "Chocolate is my favourite food[]"};
-		
+
 		String[] comma = {"The best colours are blue[] green[] and red.", "She is a young[] pretty girl."
 				, "He is a strong[] handsome man.", "After eating lunch and walking home[] she had a nap." , "Yes[] Burt[] I will.", "He was happy[] however[] annoyed."
 				, "Let's eat[] grandma.", "Joh walked into the room[] ate cheese[] and left.", "On the floor were laying pants[] shoes[] and a shirt."
@@ -133,10 +138,57 @@ public class WordMaster {
 
 		return 0;
 	}
+
 	public static int homon(){
 		//Have a sentence vault, choose 10 or so at random. (multi choice)
 
+		Scanner kb = new Scanner(System.in);
+		Random rnd = new Random();
+		int i = 0, md = 0;
+		String ans;
+		int score2 = 0;
 
+		//There
+		String[] there= {"Let us go [].", "Can we go [] later?", "[] was two dogs.", "Today, [] is no class. "
+				, "Jack is over [] with Sally.", "[] once was a man named Xavier.", "Jimmy fell down the well over []."
+				, "[] isn't any time to explain!", "Why is [] no pizza left?", "The storm was bad [], but everyone made it to safety."
+				//Their
+				, "The team did [] best at the competition.", "I like [] photo album.", "[] dog is a real trouble maker!"
+				, "We should borrow [] hammer!", "I should ask for [] approval of the project.", "[] home town is in Nova Scotia."
+				, "The family next door has a problem. [] goldfish is sick.", "If they want our cookies, [] hamburgers are ours."
+				, "[] house looks so good this time of year!", "That school is neat. [] mascot is a goat."
+
+				//They're
+				, "[] preparing for battle.", "Go find out what [] up to.", "[] happy."
+				, "That is what [] doing?", "I hope [] having fun.", "[] moving in on Friday."
+				, "[] so annoying.", "The team is doing well. [] training hard."
+				, "[] at school with Billy.", "Charlie went to find out where [] living."
+		};
+		//Your
+		String [] your= {"[] dog is awesome.", "Can I borrow [] pencil?", "[] day tomorrow is going to be busy."
+				, "Can I meet [] family?", "I went to regionals with [] school.", "[] friends say I'm no fun."
+				, "When are we going to [] house?", "Let's do things [] way!", "In the end [] robot was better."
+				, "Lets get [] assignment out of the way."
+
+				//You're
+				, "[] way too good for this class!", "Can I see [] grade on this test?"
+				, "At this rate, [] going to fail the assignment.", "[] just like Ted from gym last year!"
+				, "I'm just going to pretend [] the best baker.", "Aww, [] so sweet for getting me this!"
+				, "My friend said [] great at drawing!", "On behalf of the kingdom, [] hereby being knighted."
+				, "When it is midnight, [] to head home.", "[] so lucky to have such great friends!"
+		};
+
+		System.out.print("Welcome to the homonyms section!"
+				+ "\nCapitals are not used, so don't worry about having a lowercase at the beginning of a word! "
+				+ "\nYour objective will be to use the correct form of the word for the given sentence"
+				+ "\nPlease type 0 to get a definition of what an homonym is, or type 1 to start!");
+		md=kb.nextInt();
+		if(md==1){
+
+		} else {
+			homonDef();
+			homon();
+		}
 
 		return 0;
 	}
@@ -163,5 +215,36 @@ public class WordMaster {
 
 			test[z]=i;
 		} return test;
+	}
+
+	public static void anagDef(){
+		int i;
+		Scanner kb=new Scanner(System.in);
+
+		System.out.println("An anagram is a word that has its letters in a random order."
+				+ "\nYour job is to state the correct order of the word.\n");
+		System.out.println("Please type 1 for some examples, or anything else to go back: ");
+		i=kb.nextInt();
+
+		if(i==1){
+			System.out.println("faelm=flame\ndor=rod\ncjkas=jacks\niplto=pilot\ncarcare=racecar\n");
+		} else {
+
+		}
+	}
+
+	public static void homonDef(){
+		int i;
+		Scanner kb=new Scanner(System.in);
+
+		System.out.println("A homonym is a word pronounced the same as another "
+				+ "but differing in meaning, whether spelled the same way or not, "
+				+ "as heir and air; a homophone");
+		System.out.println("Please type 1 for some examples, or anything else to go back: ");
+		i=kb.nextInt();
+
+		if(i==1)
+			System.out.println("Which and witch\ncite, sight and site\ndew, do and due\n");
+
 	}
 }
