@@ -113,10 +113,19 @@ public class WordMaster {
 		//Choose between . , ; ' and ?
 
 		//First 20 will be . The next 20 will be , and so on
-		String [] question = {"The dog says woof[ ]", "The cat says meow[ ]", "I like cheese[ ]", "I went for a walk[ ]", "Hit the ball with the paddle[ ]"
-				, "It's fun to run[ ]", "School is where you learn[ ]", "Don't run with scissors[ ]", "It is sunny outside today[ ]", "Hit the ball with the bat[ ]" //Periods
+		String [] period = {"The dog says woof[ ]", "The cat says meow[ ]", "I like cheese[ ]", "I went for a walk[ ]", "Hit the ball with the paddle[ ]"
+				, "It's fun to run[ ]", "School is where you learn[ ]", "Don't run with scissors[ ]", "It is sunny outside today[ ]", "Hit the ball with the bat[ ]" 
 				, "Rain is no fun[]", "It's good to have a healthy breakfast[]", "Lunch is my favourite meal of the day[]", "English is confusing[]", "Learning is fun[]"
-				, "Cows go moo[]", "Siblings are annoying[]", "Nanny makes cookies[]", "Sports are fun[]", "Computer Science is the best faculty[]"};
+				, "Cows go moo[]", "Siblings are annoying[]", "Nanny makes cookies[]", "Sports are fun[]", "Computer Science is the best faculty[]"
+				, "Chocolate is my favourite food[]"};
+		
+		String[] comma = {"The best colours are blue[] green[] and red.", "She is a young[] pretty girl."
+				, "He is a strong[] handsome man.", "After eating lunch and walking home[] she had a nap." , "Yes[] Burt[] I will.", "He was happy[] however[] annoyed."
+				, "Let's eat[] grandma.", "Joh walked into the room[] ate cheese[] and left.", "On the floor were laying pants[] shoes[] and a shirt."
+				, "I am from Halifax[] Nova Scotia.", "Darling[] where is the cheese?", "Tim is a fine husband[] friend[] and employee."
+				, "He walked into the store[] looked around[] and left.", "I've been to Mexico[] Quebec[] and France", "Jim's backpack is blue[] green[] and pink."
+				, "Hotchocolate is made of water[] sugar[] and cocoa.", "John ate twelve slices of pizza[] two salads[] and drank five glasses of milk."
+				, "The colours of the American flag are red[] white[] and blue."};
 
 
 
