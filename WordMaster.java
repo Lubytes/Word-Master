@@ -50,8 +50,8 @@ public class WordMaster {
 
 		//If any words are added the random num (i) needs to be changed
 		String [] word = {"hello", "goodbye", "greetings", "helpful", "cheese", "amazing", "question", "forever"
-				+ "remote", "board", "white", "black", "colour", "green", "yellow", "orange", "fun" 
-						+ "one", "two", "three", "four", "five", "six", "seven", "eight", "excellent"};
+				, "remote", "board", "white", "black", "colour", "green", "yellow", "orange", "fun" 
+						, "one", "two", "three", "four", "five", "six", "seven", "eight", "excellent"};
 
 		System.out.print("Welcome to the anagram section! An anagram is a word that has its letters in a random order."
 				+ "\nYour job is to state the correct order of the word."
