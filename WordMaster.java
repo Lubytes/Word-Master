@@ -55,32 +55,36 @@ public class WordMaster {
 
 		System.out.print("Welcome to the anagram section!"
 				+ "\nCapitals are not used, so don't worry about having a lowercase at the beginning of a word! "
-				+ "\nPlease type 0 to get a definition of what an anagram is, or type 1 to start!");
+				+ "\nPlease type 0 to get a definition of what an anagram is, or type anything else to start!");
 		md=kb.nextInt();
-		//counts 10 questions
-		if(md==1){
-			int [] test = questionSelect(x);
-			for (int z = 0; z<10; z++){
-
-				i = test[z];
-
-				System.out.print("Your word is: ");
-				//Sends the randomly picked word to be scrambled
-				scram(word[i]);
-				System.out.print("\nState the ordered word: ");
-				//Incase they put in a capital letter
-				ans = kb.nextLine().toLowerCase();
-				if (ans.equals(word[i])){
-					System.out.println("That is correct! ");
-					score1++;
-				}
-				else
-					System.out.println("This is incorrect.\nThe answer we were looking for was " + word[i]);
-			} 
-		} else {
+		
+		if(md==0)
 			anagDef();
-			anag();
-		}
+		
+		System.out.println("Let's begin!");	
+		//counts 10 questions
+		int [] test = questionSelect(x);
+		for (int z = 0; z<10; z++){
+
+			i = test[z];
+
+			System.out.print("Your word is: ");
+			//Sends the randomly picked word to be scrambled
+			scram(word[i]);
+			System.out.print("\nState the ordered word: ");
+			//Incase they put in a capital letter
+			ans = kb.nextLine().toLowerCase();
+			if (ans.equals(word[i])){
+				System.out.println("That is correct! ");
+				score1++;
+			}
+			else
+				System.out.println("This is incorrect.\nThe answer we were looking for was " + word[i]);
+		} 
+		
+			
+	
+		
 		return score1;
 
 	}
@@ -115,6 +119,13 @@ public class WordMaster {
 	}
 	public static int punc(){
 		//Have a sentence vault, choose 10 or so at random. (multi choice)
+		Random rnd=new Random();
+		boolean k;
+		int l=0;
+		int m=0;
+		int w=0;
+		int length = 0;
+		
 		//Choose between . , ; ' and ?
 
 		//First 20 will be . The next 20 will be , and so on
@@ -132,10 +143,78 @@ public class WordMaster {
 				, "Hotchocolate is made of water[] sugar[] and cocoa.", "John ate twelve slices of pizza[] two salads[] and drank five glasses of milk."
 				, "The colours of the American flag are red[] white[] and blue."};
 
+		String [] scolon = {"Some people dance[] others sing.", "The sock is green; it is also smelly.", "I like Jim; however, he does smell"
+				, "Pickles are tasty; they're also green."};
 
+		String [] apos = {""};
+		
+		String [] ques = {""};
 
+		int a = 2;//period
+		int b = 2;//comma
+		int c = 2;//scolon
+		int d = 2;//apos
+		int e = 2;//ques
+		int [] f = new int[2];//a
+		int [] g = new int[2];//b
+		int [] h = new int[2];//c
+		int [] i = new int[2];//d
+		int [] j = new int[2];//e
+		int [] test = {};
+		//counts 10 questions
+		for (int z = 0; z<10; z++){
+			k = true;
+			//Choose which section (none more than twice!)
+			while(k == true){
+				m = rnd.nextInt(4);
+				if(m==0 && a>0){
+					test = f;
+					a--;
+					w=a;
+					k=false;
+				}
+				else if(m==1 && b>0){
+					test = g;
+					b--;
+					w=b;
+					k=false;
+				}
+				else if(m==2 && c>0){
+					test = h;
+					c--;
+					w=c;
+					k=false;
+				}
+				else if(m==3 && d>0){
+					test = i;
+					d--;
+					w=d;
+					k=false;
+				}
+				else if(m==4 && e>0){
+					test = j;
+					e--;
+					w=e;
+					k=false;
+				}
+			}
+			//Makes sure words are not re-used
+			while(k == false){
+				k = true;
+				l = rnd.nextInt(test.length);//length of chosen section
+				for(int y = 0; y<2; y++){
+					if(l == (test[y]))
+						k = false;
+				}
+			}
 
-
+			test[w]=l;
+			
+			//Ask question and record answer here
+		}
+		
+		
+		
 		return 0;
 	}
 
@@ -149,7 +228,7 @@ public class WordMaster {
 		int score2 = 0;
 
 		//There
-		String[] there= {"Let us go [].", "Can we go [] later?", "[] was two dogs.", "Today, [] is no class. "
+		String[] there = {"Let us go [].", "Can we go [] later?", "[] was two dogs.", "Today, [] is no class. "
 				, "Jack is over [] with Sally.", "[] once was a man named Xavier.", "Jimmy fell down the well over []."
 				, "[] isn't any time to explain!", "Why is [] no pizza left?", "The storm was bad [], but everyone made it to safety."
 				//Their
@@ -165,7 +244,7 @@ public class WordMaster {
 				, "[] at school with Billy.", "Charlie went to find out where [] living."
 		};
 		//Your
-		String [] your= {"[] dog is awesome.", "Can I borrow [] pencil?", "[] day tomorrow is going to be busy."
+		String [] your = {"[] dog is awesome.", "Can I borrow [] pencil?", "[] day tomorrow is going to be busy."
 				, "Can I meet [] family?", "I went to regionals with [] school.", "[] friends say I'm no fun."
 				, "When are we going to [] house?", "Let's do things [] way!", "In the end [] robot was better."
 				, "Lets get [] assignment out of the way."
@@ -178,11 +257,11 @@ public class WordMaster {
 				, "When it is midnight, [] to head home.", "[] so lucky to have such great friends!"
 		};
 		//too
-		String [] to= {"There are [] many things.", "I baked [] many cakes.", "The sky is [] blue."
+		String [] to = {"There are [] many things.", "I baked [] many cakes.", "The sky is [] blue."
 				, "The cold is [] much for me.", "The beach has [] many grains of sand."
 				, "The sun is [] bright.", "You are running [] fast.", "The cookies are [] high for me to reach."
 				, "Don't get [] close to the fire."
-				, "It is [] wet outside to play.", 
+				, "It is [] wet outside to play." 
 		//to
 				,"I went [] the store.", "There is time [] read this book."
 				, "We can fly [] to the moon.  "
@@ -190,7 +269,7 @@ public class WordMaster {
 				, "Lets go [] the mall.", "We can go outside [] play."
 				, "I brought my books [] school.", "We have [] share."
 				, "The wolf walked [] the woods.", "There is a path [] grandma's house."
-		}
+		};
 		System.out.print("Welcome to the homonyms section!"
 				+ "\nCapitals are not used, so don't worry about having a lowercase at the beginning of a word! "
 				+ "\nYour objective will be to use the correct form of the word for the given sentence"
@@ -241,9 +320,7 @@ public class WordMaster {
 
 		if(i==1){
 			System.out.println("faelm=flame\ndor=rod\ncjkas=jacks\niplto=pilot\ncarcare=racecar\n");
-		} else {
-
-		}
+		} 
 	}
 
 	public static void homonDef(){
