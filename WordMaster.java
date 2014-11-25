@@ -45,9 +45,9 @@ public class WordMaster {
 				, "one", "two", "three", "four", "five", "six", "seven", "eight", "excellent"};
 		Scanner kb = new Scanner(System.in);
 		Random rnd = new Random();
-		int i = 0, md;//The random number
+		int i = 0;//The random number
 		int x = word.length;//Used for the random #
-		String ans;
+		String ans, md;
 		int score1 = 0;
 		boolean b;
 
@@ -55,13 +55,15 @@ public class WordMaster {
 
 		System.out.print("Welcome to the anagram section!"
 				+ "\nCapitals are not used, so don't worry about having a lowercase at the beginning of a word! "
-				+ "\nPlease type 0 to get a definition of what an anagram is, or type anything else to start!");
-		md=kb.nextInt();
+				+ "\nPlease type 1 to get a definition of what an anagram is, or type anything else to start!");
+		md=kb.nextLine();
 		
-		if(md==0)
+		if(md.equals("1"))
 			anagDef();
 		
-		System.out.println("Let's begin!");	
+		System.out.println("=========================================\n"
+				+ "              Let's begin!\n"
+				+ "=========================================");	
 		//counts 10 questions
 		int [] test = questionSelect(x);
 		for (int z = 0; z<10; z++){
@@ -120,15 +122,28 @@ public class WordMaster {
 	public static int punc(){
 		//Have a sentence vault, choose 10 or so at random. (multi choice)
 		Random rnd=new Random();
+		Scanner kb = new Scanner(System.in);
 		boolean k;
 		int l=0;
 		int m=0;
 		int w=0;
 		int length = 0;
+		String md;
 		
+		System.out.print("Welcome to the punctuation section!"
+				+ "\nYour objective is to state the correct punctuation where there is a blank [] in a sentence."
+				+ "\nPlease type 1 to get a definition of what punctuation is, or type anything else to start!");
+		md=kb.nextLine();
+		
+		if (md.equals("1"))
+			puncDef();
+		
+		System.out.println("=========================================\n"
+				+ "              Let's begin!\n"
+				+ "=========================================");	
 		//Choose between . , ; ' and ?
 
-		//First 20 will be . The next 20 will be , and so on
+		//List of ordered punctuation sets
 		String [] period = {"The dog says woof[ ]", "The cat says meow[ ]", "I like cheese[ ]", "I went for a walk[ ]", "Hit the ball with the paddle[ ]"
 				, "It's fun to run[ ]", "School is where you learn[ ]", "Don't run with scissors[ ]", "It is sunny outside today[ ]", "Hit the ball with the bat[ ]" 
 				, "Rain is no fun[]", "It's good to have a healthy breakfast[]", "Lunch is my favourite meal of the day[]", "English is confusing[]", "Learning is fun[]"
@@ -144,11 +159,20 @@ public class WordMaster {
 				, "The colours of the American flag are red[] white[] and blue."};
 
 		String [] scolon = {"Some people dance[] others sing.", "The sock is green; it is also smelly.", "I like Jim; however, he does smell"
-				, "Pickles are tasty; they're also green."};
+				, "Pickles are tasty; they're also green.", "Jim is going bald[] his hair is falling out!", "You should stop yelling[] you might have to go to speech therapy."
+				, "You need a bus-pass[] otherwise you will get tired of walking.", "I just finished a huge workout[] however, I am ready to go again."
+				, "I had too many low marks[] I failed the course.", "David drives stick[] Aaron takes the bus."
+				, "I know you don't like work[] nevertheless it is very good for you.", "Jim calls it garbage[] I call it treasure."
+				, "He didn't see the pole[] how he has a bruse on his head.", ""};
 
-		String [] apos = {""};
+		String [] apos = {"Everyone loves Mrs. Nunu[]s basket.", "Mrs. Nunu[]s house is the prettiest on the block.", "Have you seen David[]s basement?"
+				, "I love going over to mike[]s house.", "Dude, he[]s so cute, go ask him out.", "Go over to Shelly[]s house and take her on a date!"
+				, "You can[]t resist chocolate.", "Don[]t you be snippy with me!", "Shelly[]s new tree looks so awesome!"
+				, "I can[]t talk right now"};
 		
-		String [] ques = {""};
+		String [] ques = {"Do you like chocolate[]", "Do you think we should go[]", "What do you think[]", "I really think we should talk[]"
+				, "What do you want to eat[]", "Do you like asking questions[]", "How much work is too much work[]", "Did you enjoy Mrs. Nunu's pudding[]"
+				, "Do you want to go to the park[]", "What is the answer[]", "Are you enjoying yourself[]"};
 
 		int a = 2;//period
 		int b = 2;//comma
@@ -166,7 +190,7 @@ public class WordMaster {
 			k = true;
 			//Choose which section (none more than twice!)
 			while(k == true){
-				m = rnd.nextInt(4);
+				m = rnd.nextInt(5);
 				if(m==0 && a>0){
 					test = f;
 					a--;
@@ -211,6 +235,22 @@ public class WordMaster {
 			test[w]=l;
 			
 			//Ask question and record answer here
+			if(test == f){
+				System.out.println(period[l]);
+			}
+			else if (test == g){
+				System.out.println(comma[l]);
+			}
+			else if (test == h){
+				System.out.println(scolon[l]);
+			}
+			else if (test == i){
+				System.out.println(apos[l]);
+			}
+			else{
+				System.out.println(ques[l]);
+				
+			}
 		}
 		
 		
@@ -272,13 +312,15 @@ public class WordMaster {
 		System.out.print("Welcome to the homonyms section!"
 				+ "\nCapitals are not used, so don't worry about having a lowercase at the beginning of a word! "
 				+ "\nYour objective will be to use the correct form of the word for the given sentence"
-				+ "\nPlease type 0 to get a definition of what an homonym is, or type anything else to start!");
+				+ "\nPlease type 1 to get a definition of what an homonym is, or type anything else to start!");
 		
 		md=kb.nextLine();
-		if(md.equals("0"))
+		if(md.equals("1"))
 			homonDef();
 		
-		System.out.println("Let us begin!");
+		System.out.println("=========================================\n"
+				+ "              Let's begin!\n"
+				+ "=========================================");	
 		
 		int[] questions=questionSelect(homonArr.length);
 		for(i=0;i<10;i++){
@@ -348,32 +390,54 @@ public class WordMaster {
 	}
 
 	public static void anagDef(){
-		int i;
+		String i;
 		Scanner kb=new Scanner(System.in);
 
 		System.out.println("An anagram is a word that has its letters in a random order."
 				+ "\nYour job is to state the correct order of the word.\n");
-		System.out.println("Please type 1 for some examples, or anything else to go back: ");
-		i=kb.nextInt();
-		kb.nextLine();
+		System.out.println("Please type 1 for some examples, or anything else to start the game! ");
+		i=kb.nextLine();
 		
-		if(i==1){
+		if(i.equals("1")){
 			System.out.println("faelm=flame\ndor=rod\ncjkas=jacks\niplto=pilot\ncarcare=racecar\n");
 		} 
 	}
+	
+	public static void puncDef(){
+		String i;
+		Scanner kb=new Scanner(System.in);
+		
+		
+		System.out.println("Punctuation is the usage of symbols to allow the reader to process text correctly."
+				+ "\nPunctuation can be found within a sentence, or at the end of one.");
+		System.out.println("Please type 1 for some examples, or anything else to start the game!");
+		i=kb.nextLine();
+		
+		//Choose between . , ; ' and ?
+		if(i.equals("1"))
+			System.out.println("Periods (.) go at the end of a complete sentence:"
+					+ "\nI like cheese."
+					+ "\nComma's (,) seperate parts of a sentence:"
+					+ "\nI like cheese, meat, and veggies."
+					+ "\nSemicolon's (;)are used to join two (what would be) sentences when they're both one idea:"
+					+ "\nSteve is going bald; his hair is falling out!"
+					+ "\nApostrophe's (') are used to indicate possession or the combination of two words:"
+					+ "\nDon't = do not\nBeth's cake is delicious!"
+					+ "\nQuestion marks (?) are used to end a sentence, they also indicate that the sentence is asking a question:"
+					+ "\nAre you ready to begin?");
+	}
 
 	public static void homonDef(){
-		int i;
+		String i;
 		Scanner kb=new Scanner(System.in);
 
 		System.out.println("A homonym is a word pronounced the same as another "
 				+ "but differing in meaning, whether spelled the same way or not, "
 				+ "as heir and air; a homophone");
-		System.out.println("Please type 1 for some examples, or anything else to go back: ");
-		i=kb.nextInt();
-		kb.nextLine();
+		System.out.println("Please type 1 for some examples, or anything else to start the game! ");
+		i=kb.nextLine();
 		
-		if(i==1)
+		if(i.equals("1"))
 			System.out.println("Which and witch\ncite, sight and site\ndew, do and due\n");
 
 	}
