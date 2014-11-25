@@ -18,7 +18,7 @@ public class WordMaster {
 				+ "\nPlease type the number that corresponds with the section."
 				+ "\nRemember that you may not do a section more than once.");
 		int s = kb.nextInt();
-
+		kb.nextLine();
 		//Section 1
 		if (s == a){
 			int score1 = anag();
@@ -223,8 +223,8 @@ public class WordMaster {
 
 		Scanner kb = new Scanner(System.in);
 		Random rnd = new Random();
-		int i = 0, md = 0;
-		String ans, ansCheck = null;
+		int i = 0;
+		String ans, ansCheck = null, md;
 		int score2 = 0;
 
 		//There
@@ -273,8 +273,9 @@ public class WordMaster {
 				+ "\nCapitals are not used, so don't worry about having a lowercase at the beginning of a word! "
 				+ "\nYour objective will be to use the correct form of the word for the given sentence"
 				+ "\nPlease type 0 to get a definition of what an homonym is, or type anything else to start!");
-		md=kb.nextInt();
-		if(md==0)
+		
+		md=kb.nextLine();
+		if(md.equals("0"))
 			homonDef();
 		
 		System.out.println("Let us begin!");
@@ -282,15 +283,18 @@ public class WordMaster {
 		int[] questions=questionSelect(homonArr.length);
 		for(i=0;i<10;i++){
 			System.out.println(homonArr[questions[i]]);
-			if(questions[i]<=30){
+			if(questions[i]<=29){
 				System.out.println("Choices: there - their - they're");
-			} else if (questions[i]<=50){
+			} else if (questions[i]<=49){
 				System.out.println("Choices: your - you're");
-			} else if (questions[i]<=70){
+			} else if (questions[i]<=69){
 				System.out.println("Choices: too - to");
 			}
 			System.out.print("Please enter your word: ");
-			ans=kb.nextLine();
+			
+
+			ans=kb.nextLine().toLowerCase();
+			
 			
 			if((questions[i])/10==0){
 				ansCheck="there";
@@ -351,7 +355,8 @@ public class WordMaster {
 				+ "\nYour job is to state the correct order of the word.\n");
 		System.out.println("Please type 1 for some examples, or anything else to go back: ");
 		i=kb.nextInt();
-
+		kb.nextLine();
+		
 		if(i==1){
 			System.out.println("faelm=flame\ndor=rod\ncjkas=jacks\niplto=pilot\ncarcare=racecar\n");
 		} 
@@ -366,7 +371,8 @@ public class WordMaster {
 				+ "as heir and air; a homophone");
 		System.out.println("Please type 1 for some examples, or anything else to go back: ");
 		i=kb.nextInt();
-
+		kb.nextLine();
+		
 		if(i==1)
 			System.out.println("Which and witch\ncite, sight and site\ndew, do and due\n");
 
