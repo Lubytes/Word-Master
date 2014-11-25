@@ -224,11 +224,11 @@ public class WordMaster {
 		Scanner kb = new Scanner(System.in);
 		Random rnd = new Random();
 		int i = 0, md = 0;
-		String ans;
+		String ans, ansCheck = null;
 		int score2 = 0;
 
 		//There
-		String[] there = {"Let us go [].", "Can we go [] later?", "[] was two dogs.", "Today, [] is no class. "
+		String[] homonArr = {"Let us go [].", "Can we go [] later?", "[] was two dogs.", "Today, [] is no class. "
 				, "Jack is over [] with Sally.", "[] once was a man named Xavier.", "Jimmy fell down the well over []."
 				, "[] isn't any time to explain!", "Why is [] no pizza left?", "The storm was bad [], but everyone made it to safety."
 				//Their
@@ -236,33 +236,29 @@ public class WordMaster {
 				, "We should borrow [] hammer!", "I should ask for [] approval of the project.", "[] home town is in Nova Scotia."
 				, "The family next door has a problem. [] goldfish is sick.", "If they want our cookies, [] hamburgers are ours."
 				, "[] house looks so good this time of year!", "That school is neat. [] mascot is a goat."
-
 				//They're
 				, "[] preparing for battle.", "Go find out what [] up to.", "[] happy."
 				, "That is what [] doing?", "I hope [] having fun.", "[] moving in on Friday."
 				, "[] so annoying.", "The team is doing well. [] training hard."
 				, "[] at school with Billy.", "Charlie went to find out where [] living."
-		};
-		//Your
-		String [] your = {"[] dog is awesome.", "Can I borrow [] pencil?", "[] day tomorrow is going to be busy."
+				//Your
+		        , "[] dog is awesome.", "Can I borrow [] pencil?", "[] day tomorrow is going to be busy."
 				, "Can I meet [] family?", "I went to regionals with [] school.", "[] friends say I'm no fun."
 				, "When are we going to [] house?", "Let's do things [] way!", "In the end [] robot was better."
 				, "Lets get [] assignment out of the way."
-
 				//You're
 				, "[] way too good for this class!", "Can I see [] grade on this test?"
 				, "At this rate, [] going to fail the assignment.", "[] just like Ted from gym last year!"
 				, "I'm just going to pretend [] the best baker.", "Aww, [] so sweet for getting me this!"
 				, "My friend said [] great at drawing!", "On behalf of the kingdom, [] hereby being knighted."
 				, "When it is midnight, [] to head home.", "[] so lucky to have such great friends!"
-		};
-		//too
-		String [] to = {"There are [] many things.", "I baked [] many cakes.", "The sky is [] blue."
+				//too
+				, "There are [] many things.", "I baked [] many cakes.", "The sky is [] blue."
 				, "The cold is [] much for me.", "The beach has [] many grains of sand."
 				, "The sun is [] bright.", "You are running [] fast.", "The cookies are [] high for me to reach."
 				, "Don't get [] close to the fire."
 				, "It is [] wet outside to play." 
-		//to
+				//to
 				,"I went [] the store.", "There is time [] read this book."
 				, "We can fly [] to the moon.  "
 				, "It would take years [] count grains of sand on the beach."
@@ -270,19 +266,57 @@ public class WordMaster {
 				, "I brought my books [] school.", "We have [] share."
 				, "The wolf walked [] the woods.", "There is a path [] grandma's house."
 		};
+		
+		String[] answers={"there","their","they're","your","you're","too","to"};
+		
 		System.out.print("Welcome to the homonyms section!"
 				+ "\nCapitals are not used, so don't worry about having a lowercase at the beginning of a word! "
 				+ "\nYour objective will be to use the correct form of the word for the given sentence"
-				+ "\nPlease type 0 to get a definition of what an homonym is, or type 1 to start!");
+				+ "\nPlease type 0 to get a definition of what an homonym is, or type anything else to start!");
 		md=kb.nextInt();
-		if(md==1){
-
-		} else {
+		if(md==0)
 			homonDef();
-			homon();
+		
+		System.out.println("Let us begin!");
+		
+		int[] questions=questionSelect(homonArr.length);
+		for(i=0;i<10;i++){
+			System.out.println(homonArr[questions[i]]);
+			if(questions[i]<=30){
+				System.out.println("Choices: there - their - they're");
+			} else if (questions[i]<=50){
+				System.out.println("Choices: your - you're");
+			} else if (questions[i]<=70){
+				System.out.println("Choices: too - to");
+			}
+			System.out.print("Please enter your word: ");
+			ans=kb.nextLine();
+			
+			if((questions[i])/10==0){
+				ansCheck="there";
+			} else if((questions[i])/10==1){
+				ansCheck="their";
+			} else if((questions[i])/10==2){
+				ansCheck="they're";
+			} else if((questions[i])/10==3){
+				ansCheck="your";
+			} else if((questions[i])/10==4){
+				ansCheck="you're";
+			} else if((questions[i])/10==5){
+				ansCheck="too";
+			} else if((questions[i])/10==6){
+				ansCheck="to";
+			}
+			
+			if(ans.equals(ansCheck)){
+				System.out.println("That is correct!");
+				score2++;
+			} else {
+				System.out.println("That is incorrect. The word we were looking for was: "+ansCheck);
+			}
 		}
 
-		return 0;
+		return score2;
 	}
 
 	public static int[] questionSelect(int length){
