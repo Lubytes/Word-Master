@@ -31,6 +31,7 @@ public class WordMaster {
 		}
 		else if (s == c){
 			int score3 = homon();
+			System.out.print("Your score was " +score3 +"/10")
 			c = 0;
 		}
 		else
