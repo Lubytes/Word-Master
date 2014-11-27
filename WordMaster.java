@@ -228,6 +228,7 @@ public class WordMaster {
 					test = j;
 					e--;
 					x=e;
+					w=5;
 					k=false;
 				}
 			}
