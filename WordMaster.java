@@ -27,6 +27,7 @@ public class WordMaster {
 		}
 		else if (s == b){
 			int score2 = punc();
+			System.out.print("Your score was " + score2 +"/10");
 			b = 0;
 		}
 		else if (s == c){
@@ -129,6 +130,7 @@ public class WordMaster {
 		int l=0;
 		int m=0;
 		int w=0;
+		int x=0;
 		String md;
 		
 		System.out.print("Welcome to the punctuation section!"
@@ -181,12 +183,12 @@ public class WordMaster {
 		int c = 2;//scolon
 		int d = 2;//apos
 		int e = 2;//ques
-		int [] f = new int[2];//a
-		int [] g = new int[2];//b
-		int [] h = new int[2];//c
-		int [] i = new int[2];//d
-		int [] j = new int[2];//e
-		int [] test = {};//Used to direct numbers to the correct array
+		int [] f = {8,8};//a
+		int [] g = {8,8};//b
+		int [] h = {8,8};//c
+		int [] i = {8,8};//d
+		int [] j = {8,8};//e
+		int [] test = f;//Used to direct numbers to the correct array
 		String ans = null;
 		//counts 10 questions
 		for (int z = 0; z<10; z++){
@@ -197,31 +199,35 @@ public class WordMaster {
 				if(m==0 && a>0){
 					test = f;
 					a--;
-					w=a;
+					x=a;
+					w=1;
 					k=false;
 				}
 				else if(m==1 && b>0){
 					test = g;
 					b--;
-					w=b;
+					x=b;
+					w=2;
 					k=false;
 				}
 				else if(m==2 && c>0){
 					test = h;
 					c--;
-					w=c;
+					x=c;
+					w=3;
 					k=false;
 				}
 				else if(m==3 && d>0){
 					test = i;
 					d--;
-					w=d;
+					x=d;
+					w=4;
 					k=false;
 				}
 				else if(m==4 && e>0){
 					test = j;
 					e--;
-					w=e;
+					x=e;
 					k=false;
 				}
 			}
@@ -235,10 +241,10 @@ public class WordMaster {
 				}
 			}
 
-			test[w]=l;
+			test[x]=l;
 			
 			//Ask question and record answer here
-			if(w == a){
+			if(w == 1){
 				System.out.println("State the following punctuation type:");
 				System.out.println(period[l]);
 				System.out.print("(. , ; ' ?): ");
@@ -250,7 +256,7 @@ public class WordMaster {
 				else
 					System.out.println("Oops! We were looking for a period");
 			}
-			else if (w == b){
+			else if (w == 2){
 				System.out.println("State the following punctuation type:");
 				System.out.println(comma[l]);
 				System.out.print("(. , ; ' ?): ");
@@ -262,7 +268,7 @@ public class WordMaster {
 				else
 					System.out.println("Oops! We were looking for a comma");
 			}
-			else if (w == c){
+			else if (w == 3){
 				System.out.println("State the following punctuation type:");
 				System.out.println(scolon[l]);
 				System.out.print("(. , ; ' ?): ");
@@ -274,7 +280,7 @@ public class WordMaster {
 				else
 					System.out.println("Oops! We were looking for a semicolon");
 			}
-			else if (w == d){
+			else if (w == 4){
 				System.out.println("State the following punctuation type:");
 				System.out.println(apos[l]);
 				System.out.print("(. , ; ' ?): ");
