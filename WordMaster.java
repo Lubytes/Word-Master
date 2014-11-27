@@ -31,7 +31,7 @@ public class WordMaster {
 		}
 		else if (s == c){
 			int score3 = homon();
-			System.out.print("Your score was " +score3 +"/10")
+			System.out.print("Your score was " +score3 +"/10");
 			c = 0;
 		}
 		else
@@ -124,15 +124,16 @@ public class WordMaster {
 		//Have a sentence vault, choose 10 or so at random. (multi choice)
 		Random rnd=new Random();
 		Scanner kb = new Scanner(System.in);
+		int score2 = 0;
 		boolean k;
 		int l=0;
 		int m=0;
 		int w=0;
-		int length = 0;
 		String md;
 		
 		System.out.print("Welcome to the punctuation section!"
 				+ "\nYour objective is to state the correct punctuation where there is a blank [] in a sentence."
+				+ "\nEven if there are multiple blanks in a sentence, only state ONE punctuation type."
 				+ "\nPlease type 1 to get a definition of what punctuation is, or type anything else to start!");
 		md=kb.nextLine();
 		
@@ -159,8 +160,8 @@ public class WordMaster {
 				, "Hotchocolate is made of water[] sugar[] and cocoa.", "John ate twelve slices of pizza[] two salads[] and drank five glasses of milk."
 				, "The colours of the American flag are red[] white[] and blue."};
 
-		String [] scolon = {"Some people dance[] others sing.", "The sock is green; it is also smelly.", "I like Jim; however, he does smell"
-				, "Pickles are tasty; they're also green.", "Jim is going bald[] his hair is falling out!", "You should stop yelling[] you might have to go to speech therapy."
+		String [] scolon = {"Some people dance[] others sing.", "The sock is green[] it is also smelly.", "I like Jim[] however, he does smell"
+				, "Pickles are tasty[] they're also green.", "Jim is going bald[] his hair is falling out!", "You should stop yelling[] you might have to go to speech therapy."
 				, "You need a bus-pass[] otherwise you will get tired of walking.", "I just finished a huge workout[] however, I am ready to go again."
 				, "I had too many low marks[] I failed the course.", "David drives stick[] Aaron takes the bus."
 				, "I know you don't like work[] nevertheless it is very good for you.", "Jim calls it garbage[] I call it treasure."
@@ -185,7 +186,8 @@ public class WordMaster {
 		int [] h = new int[2];//c
 		int [] i = new int[2];//d
 		int [] j = new int[2];//e
-		int [] test = {};
+		int [] test = {};//Used to direct numbers to the correct array
+		String ans = null;
 		//counts 10 questions
 		for (int z = 0; z<10; z++){
 			k = true;
@@ -236,27 +238,72 @@ public class WordMaster {
 			test[w]=l;
 			
 			//Ask question and record answer here
-			if(test == f){
+			if(w == a){
+				System.out.println("State the following punctuation type:");
 				System.out.println(period[l]);
+				System.out.print("(. , ; ' ?): ");
+				ans = kb.nextLine();
+				if (ans.equals(".")){
+					System.out.println("That is right!");
+					score2 +=1;
+				}
+				else
+					System.out.println("Oops! We were looking for a period");
 			}
-			else if (test == g){
+			else if (w == b){
+				System.out.println("State the following punctuation type:");
 				System.out.println(comma[l]);
+				System.out.print("(. , ; ' ?): ");
+				ans = kb.nextLine();
+				if (ans.equals(",")){
+					System.out.println("That is right!");
+					score2 +=1;
+				}
+				else
+					System.out.println("Oops! We were looking for a comma");
 			}
-			else if (test == h){
+			else if (w == c){
+				System.out.println("State the following punctuation type:");
 				System.out.println(scolon[l]);
+				System.out.print("(. , ; ' ?): ");
+				ans = kb.nextLine();
+				if (ans.equals(";")){
+					System.out.println("That is right!");
+					score2 +=1;
+				}
+				else
+					System.out.println("Oops! We were looking for a semicolon");
 			}
-			else if (test == i){
+			else if (w == d){
+				System.out.println("State the following punctuation type:");
 				System.out.println(apos[l]);
+				System.out.print("(. , ; ' ?): ");
+				ans = kb.nextLine();
+				if (ans.equals("'")){
+					System.out.println("That is right!");
+					score2 +=1;
+				}
+				else
+					System.out.println("Oops! We were looking for an apostrophe");
 			}
 			else{
+				System.out.println("State the following punctuation type:");
 				System.out.println(ques[l]);
+				System.out.print("(. , ; ' ?): ");
+				ans = kb.nextLine();
+				if (ans.equals("?")){
+					System.out.println("That is right!");
+					score2 +=1;
+				}
+				else
+					System.out.println("Oops! We were looking for a question mark");
 				
 			}
 		}
 		
 		
 		
-		return 0;
+		return score2;
 	}
 
 	public static int homon(){
