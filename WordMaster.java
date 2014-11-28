@@ -4,39 +4,54 @@
  */
 import java.util.Random;
 import java.util.Scanner;
-public class WordMaster {
+public class Test {
 	public static void main (String[]args){
 		Scanner kb = new Scanner(System.in);
 		//a = anagrams, b = punctuation, c = homonyms
-		int a = 1, b = 2, c = 3;
-
+		int score1 = 0, score2 = 0, score3 = 0;
+		double avg;
+		boolean a=false, b=false, c=false;
+		
 		//Introduction
 		System.out.println("Hello user! What is your name? ");
 		String name = kb.nextLine();
-		System.out.println("Well, " + name + " we're going to go over some basic English skills. "
-				+ "\nWould you like to start with anagrams(1), punctuation(2), or homonyms(3)?"
-				+ "\nPlease type the number that corresponds with the section."
-				+ "\nRemember that you may not do a section more than once.");
-		int s = kb.nextInt();
-		kb.nextLine();
+		System.out.println("Well, " + name + " we're going to go over some basic English skills. ");
+				
+		
+		
 		//Section 1
-		if (s == a){
-			int score1 = anag();
-			System.out.print("Your score was " + score1 +"/10");
-			a = 0;
+		while(!(a&&b&&c)){
+			
+			System.out.println("\n\nWould you like to do anagrams(1), punctuation(2), or homonyms(3)?"
+					+ "\nPlease type the number that corresponds with the section."
+					+ "\nRemember that you may not do a section more than once.");
+			
+			int s = kb.nextInt();
+			kb.nextLine();
+			
+			
+			if (s == 1 && !a){
+				score1 = anag();
+				System.out.print("Your score was " + score1 +"/10");
+				a = true;
+			}
+			else if (s == 2 && !b){
+				score2 = punc();
+				b = true;
+			}
+			else if (s == 3 && !c){
+				score3 = homon();
+				System.out.print("Your score was " +score3 +"/10");
+				c = true;
+			}
+			else
+				System.out.println("You have already completed that section");
 		}
-		else if (s == b){
-			int score2 = punc();
-			b = 0;
-		}
-		else if (s == c){
-			int score3 = homon();
-			System.out.print("Your score was " +score3 +"/10");
-			c = 0;
-		}
-		else
-			System.out.println("You have already completed that section");
-
+		
+		avg=(score1+score2+score3)/3;
+		System.out.println("Your average score is: "+avg);
+		System.out.println("Thanks for playing!");
+		
 	}
 
 	public static int anag(){
@@ -58,10 +73,10 @@ public class WordMaster {
 				+ "\nCapitals are not used, so don't worry about having a lowercase at the beginning of a word! "
 				+ "\nPlease type 1 to get a definition of what an anagram is, or type anything else to start!");
 		md=kb.nextLine();
-		
+
 		if(md.equals("1"))
 			anagDef();
-		
+
 		System.out.println("=========================================\n"
 				+ "              Let's begin!\n"
 				+ "=========================================");	
@@ -84,10 +99,10 @@ public class WordMaster {
 			else
 				System.out.println("This is incorrect.\nThe answer we were looking for was " + word[i]);
 		} 
-		
-			
-	
-		
+
+
+
+
 		return score1;
 
 	}
@@ -130,16 +145,16 @@ public class WordMaster {
 		int m=0;
 		int w=0;
 		String md;
-		
+
 		System.out.print("Welcome to the punctuation section!"
 				+ "\nYour objective is to state the correct punctuation where there is a blank [] in a sentence."
 				+ "\nEven if there are multiple blanks in a sentence, only state ONE punctuation type."
 				+ "\nPlease type 1 to get a definition of what punctuation is, or type anything else to start!");
 		md=kb.nextLine();
-		
+
 		if (md.equals("1"))
 			puncDef();
-		
+
 		System.out.println("=========================================\n"
 				+ "              Let's begin!\n"
 				+ "=========================================");	
@@ -171,7 +186,7 @@ public class WordMaster {
 				, "I love going over to mike[]s house.", "Dude, he[]s so cute, go ask him out.", "Go over to Shelly[]s house and take her on a date!"
 				, "You can[]t resist chocolate.", "Don[]t you be snippy with me!", "Shelly[]s new tree looks so awesome!"
 				, "I can[]t talk right now"};
-		
+
 		String [] ques = {"Do you like chocolate[]", "Do you think we should go[]", "What do you think[]", "I really think we should talk[]"
 				, "What do you want to eat[]", "Do you like asking questions[]", "How much work is too much work[]", "Did you enjoy Mrs. Nunu's pudding[]"
 				, "Do you want to go to the park[]", "What is the answer[]", "Are you enjoying yourself[]"};
@@ -236,7 +251,7 @@ public class WordMaster {
 			}
 
 			test[w]=l;
-			
+
 			//Ask question and record answer here
 			if(w == a){
 				System.out.println("State the following punctuation type:");
@@ -297,12 +312,12 @@ public class WordMaster {
 				}
 				else
 					System.out.println("Oops! We were looking for a question mark");
-				
+
 			}
 		}
-		
-		
-		
+
+
+
 		return score2;
 	}
 
@@ -330,7 +345,7 @@ public class WordMaster {
 				, "[] so annoying.", "The team is doing well. [] training hard."
 				, "[] at school with Billy.", "Charlie went to find out where [] living."
 				//Your
-		        , "[] dog is awesome.", "Can I borrow [] pencil?", "[] day tomorrow is going to be busy."
+				, "[] dog is awesome.", "Can I borrow [] pencil?", "[] day tomorrow is going to be busy."
 				, "Can I meet [] family?", "I went to regionals with [] school.", "[] friends say I'm no fun."
 				, "When are we going to [] house?", "Let's do things [] way!", "In the end [] robot was better."
 				, "Lets get [] assignment out of the way."
@@ -354,22 +369,22 @@ public class WordMaster {
 				, "I brought my books [] school.", "We have [] share."
 				, "The wolf walked [] the woods.", "There is a path [] grandma's house."
 		};
-		
+
 		String[] answers={"there","their","they're","your","you're","too","to"};
-		
+
 		System.out.print("Welcome to the homonyms section!"
 				+ "\nCapitals are not used, so don't worry about having a lowercase at the beginning of a word! "
 				+ "\nYour objective will be to use the correct form of the word for the given sentence"
 				+ "\nPlease type 1 to get a definition of what an homonym is, or type anything else to start!");
-		
+
 		md=kb.nextLine();
 		if(md.equals("1"))
 			homonDef();
-		
+
 		System.out.println("=========================================\n"
 				+ "              Let's begin!\n"
 				+ "=========================================");	
-		
+
 		int[] questions=questionSelect(homonArr.length);
 		for(i=0;i<10;i++){
 			System.out.println(homonArr[questions[i]]);
@@ -381,11 +396,11 @@ public class WordMaster {
 				System.out.println("Choices: too - to");
 			}
 			System.out.print("Please enter your word: ");
-			
+
 
 			ans=kb.nextLine().toLowerCase();
-			
-			
+
+
 			if((questions[i])/10==0){
 				ansCheck="there";
 			} else if((questions[i])/10==1){
@@ -401,7 +416,7 @@ public class WordMaster {
 			} else if((questions[i])/10==6){
 				ansCheck="to";
 			}
-			
+
 			if(ans.equals(ansCheck)){
 				System.out.println("That is correct!");
 				score2++;
@@ -445,22 +460,22 @@ public class WordMaster {
 				+ "\nYour job is to state the correct order of the word.\n");
 		System.out.println("Please type 1 for some examples, or anything else to start the game! ");
 		i=kb.nextLine();
-		
+
 		if(i.equals("1")){
 			System.out.println("faelm=flame\ndor=rod\ncjkas=jacks\niplto=pilot\ncarcare=racecar\n");
 		} 
 	}
-	
+
 	public static void puncDef(){
 		String i;
 		Scanner kb=new Scanner(System.in);
-		
-		
+
+
 		System.out.println("Punctuation is the usage of symbols to allow the reader to process text correctly."
 				+ "\nPunctuation can be found within a sentence, or at the end of one.");
 		System.out.println("Please type 1 for some examples, or anything else to start the game!");
 		i=kb.nextLine();
-		
+
 		//Choose between . , ; ' and ?
 		if(i.equals("1"))
 			System.out.println("Periods (.) go at the end of a complete sentence:"
@@ -484,7 +499,7 @@ public class WordMaster {
 				+ "as heir and air; a homophone");
 		System.out.println("Please type 1 for some examples, or anything else to start the game! ");
 		i=kb.nextLine();
-		
+
 		if(i.equals("1"))
 			System.out.println("Which and witch\ncite, sight and site\ndew, do and due\n");
 
