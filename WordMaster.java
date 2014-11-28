@@ -4,7 +4,7 @@
  */
 import java.util.Random;
 import java.util.Scanner;
-public class Test {
+public class WordMaster {
 	public static void main (String[]args){
 		Scanner kb = new Scanner(System.in);
 		//a = anagrams, b = punctuation, c = homonyms
