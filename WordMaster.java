@@ -56,7 +56,7 @@ public class WordMaster {
 				System.out.println("You have already completed that section");
 
 		}
-		
+		System.out.println("");
 		System.out.println(name+", your average score was: "+(score1+score2+score3)/3.0);
 		System.out.println("Thanks for playing!");
 		
@@ -336,7 +336,6 @@ public class WordMaster {
 		//Have a sentence vault, choose 10 or so at random. (multi choice)
 
 		Scanner kb = new Scanner(System.in);
-		Random rnd = new Random();
 		int i = 0;
 		String ans, ansCheck = null, md;
 		int score2 = 0;
@@ -491,7 +490,7 @@ public class WordMaster {
 		if(i.equals("1"))
 			System.out.println("Periods (.) go at the end of a complete sentence:"
 					+ "\nI like cheese."
-					+ "\nComma's (,) seperate parts of a sentence:"
+					+ "\nComma's (,) separate parts of a sentence:"
 					+ "\nI like cheese, meat, and veggies."
 					+ "\nSemicolon's (;)are used to join two (what would be) sentences when they're both one idea:"
 					+ "\nSteve is going bald; his hair is falling out!"
