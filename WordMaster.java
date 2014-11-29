@@ -186,7 +186,7 @@ public class WordMaster {
 				, "You need a bus-pass[] otherwise you will get tired of walking.", "I just finished a huge workout[] however, I am ready to go again."
 				, "I had too many low marks[] I failed the course.", "David drives stick[] Aaron takes the bus."
 				, "I know you don't like work[] nevertheless it is very good for you.", "Jim calls it garbage[] I call it treasure."
-				, "He didn't see the pole[] how he has a bruse on his head.", ""};
+				, "He didn't see the pole[] how he has a bruse on his head."};
 
 		String [] apos = {"Everyone loves Mrs. Nunu[]s basket.", "Mrs. Nunu[]s house is the prettiest on the block.", "Have you seen David[]s basement?"
 				, "I love going over to mike[]s house.", "Dude, he[]s so cute, go ask him out.", "Go over to Shelly[]s house and take her on a date!"
