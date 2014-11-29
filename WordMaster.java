@@ -57,7 +57,7 @@ public class WordMaster {
 
 		}
 		
-		System.out.println(name+", Your average score is: "+(score1+score2+score3)/3.0);
+		System.out.println(name+", your average score is: "+(score1+score2+score3)/3.0);
 		System.out.println("Thanks for playing!");
 		
 	}
