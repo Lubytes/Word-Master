@@ -8,9 +8,9 @@ public class WordMaster {
 	public static void main (String[]args){
 		Scanner kb = new Scanner(System.in);
 		//a = anagrams, b = punctuation, c = homonyms
-		int score1 = 0, score2 = 0, score3 = 0;
-		double avg;
-		boolean a=false, b=false, c=false;
+		int score1 = 0, score2 = 0, score3 = 0, s = 0;
+		boolean a=false, b=false, c=false, d=true;//sections, and d is a check
+		String er = "null";
 		
 		//Introduction
 		System.out.println("Hello user! What is your name? ");
@@ -22,14 +22,20 @@ public class WordMaster {
 		//Section 1
 
 		while(!(a&&b&&c)){
+			//while all sections are not complete
 			
-			System.out.println("\n\nWould you like to do anagrams(1), punctuation(2), or homonyms(3)?"
-					+ "\nPlease type the number that corresponds with the section."
-					+ "\nRemember that you may not do a section more than once.");
-			
-			int s = kb.nextInt();
-			kb.nextLine();
-			
+			d = true;
+			while (d){
+				//while user did not input a correct number
+				System.out.println("\n\nWould you like to do anagrams(1), punctuation(2), or homonyms(3)?"
+						+ "\nPlease type the number that corresponds with the section."
+						+ "\nRemember that you may not do a section more than once.");
+				
+				er = kb.nextLine();
+				s = Integer.parseInt(er);
+				if (er.equals("1") || er.equals("2") || er.equals("3"))
+					d = false;
+			}
 			
 			if (s == 1 && !a){
 				score1 = anag();
@@ -38,6 +44,7 @@ public class WordMaster {
 			}
 			else if (s == 2 && !b){
 				score2 = punc();
+				System.out.print("Your score was " + score2 +"/10");
 				b = true;
 			}
 			else if (s == 3 && !c){
@@ -50,8 +57,7 @@ public class WordMaster {
 
 		}
 		
-		avg=(score1+score2+score3)/3;
-		System.out.println("Your average score is: "+avg);
+		System.out.println("Your average score is: "+(score1+score2+score3)/3.0);
 		System.out.println("Thanks for playing!");
 		
 	}
@@ -60,14 +66,14 @@ public class WordMaster {
 		//Have a word vault, scramble words using a scrambler we design. (input and check if String equals)
 		String [] word = {"hello", "goodbye", "greetings", "helpful", "cheese", "amazing", "question", "forever"
 				, "remote", "board", "white", "black", "colour", "green", "yellow", "orange", "fun" 
-				, "one", "two", "three", "four", "five", "six", "seven", "eight", "excellent"};
+				, "one", "two", "three", "four", "five", "six", "seven", "eight", "excellent", "summer", "exciting"
+				, "love", "mouse", "speaker", "lips", "pencil", "running", "calculator", "card", "winter", "spring"
+				, "fall", "falling", "bag", "marker", "singing", "dancing", "joy", "laughing"};
 		Scanner kb = new Scanner(System.in);
-		Random rnd = new Random();
 		int i = 0;//The random number
 		int x = word.length;//Used for the random #
 		String ans, md;
 		int score1 = 0;
-		boolean b;
 
 
 
@@ -143,10 +149,7 @@ public class WordMaster {
 		Scanner kb = new Scanner(System.in);
 		int score2 = 0;
 		boolean k;
-		int l=0;
-		int m=0;
-		int w=0;
-		int x=0;
+		int l=0, m=0, w=0, x=0;//Defined below
 		String md;
 
 		System.out.print("Welcome to the punctuation section!"
