@@ -340,6 +340,7 @@ public class WordMaster {
 		String ans, ansCheck = null, md;
 		int score2 = 0;
 
+		//Sentence vault for the homonym segment
 		//There
 		String[] homonArr = {"Let us go [].", "Can we go [] later?", "[] was two dogs.", "Today, [] is no class. "
 				, "Jack is over [] with Sally.", "[] once was a man named Xavier.", "Jimmy fell down the well over []."
@@ -388,17 +389,17 @@ public class WordMaster {
 				+ "\nPlease type 1 to get a definition of what an homonym is, or type anything else to start!");
 
 		md=kb.nextLine();
-		if(md.equals("1"))
+		if(md.equals("1"))//Condition to trigger the definition
 			homonDef();
 
 		System.out.println("=========================================\n"
 				+ "              Let's begin!\n"
 				+ "=========================================");	
 
-		int[] questions=questionSelect(homonArr.length);
-		for(i=0;i<10;i++){
+		int[] questions=questionSelect(homonArr.length);//Selects the questions to ask
+		for(i=0;i<10;i++){//For loop to run through the questions
 			System.out.println(homonArr[questions[i]]);
-			if(questions[i]<=29){
+			if(questions[i]<=29){//Conditions to display the correct word list
 				System.out.println("Choices: there - their - they're");
 			} else if (questions[i]<=49){
 				System.out.println("Choices: your - you're");
@@ -411,7 +412,7 @@ public class WordMaster {
 			ans=kb.nextLine().toLowerCase();
 
 
-			if((questions[i])/10==0){
+			if((questions[i])/10==0){//Answer checker
 				ansCheck="there";
 			} else if((questions[i])/10==1){
 				ansCheck="their";
@@ -426,7 +427,7 @@ public class WordMaster {
 			} else if((questions[i])/10==6){
 				ansCheck="to";
 			}
-
+			//Displays if the user is correct or not based on the given question
 			if(ans.equals(ansCheck)){
 				System.out.println("That is correct!");
 				score2++;
